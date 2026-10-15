@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { verifyKey } = require('../lib/function');
-const scraper2 = require('../lib/scraper2');
+
 
 router.get('/primbon/artinama', verifyKey, async (req, res) => {
     const nama = req.query.nama;
