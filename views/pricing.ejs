@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - LoL Human REST API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #191c20; color: #f1f5f9; display: flex; min-height: 100vh; }
+        .sidebar { width: 235px; background-color: #1d2025; border-right: 1px solid #2b3038; padding: 20px 14px; position: fixed; height: 100vh; overflow-y: auto; }
+        .brand { font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 24px; color: #fff; display: block; text-decoration: none; }
+        .brand span { color: #f06a6a; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; color: #cbd5e1; text-decoration: none; font-size: 13px; margin-bottom: 4px; }
+        .nav-item.active, .nav-item:hover { background-color: #f06a6a; color: #fff; }
+        .main { margin-left: 235px; flex: 1; padding: 28px 36px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 20px; }
+        .card { background-color: #1d2025; border: 1px solid #2b3038; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card.popular { border-color: #f06a6a; position: relative; }
+        .badge-pop { position: absolute; top: 14px; right: 14px; background: rgba(240,106,106,0.15); color: #f06a6a; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+        .price { font-size: 28px; font-weight: 700; margin: 14px 0; color: #fff; }
+        .price span { font-size: 13px; color: #94a3b8; font-weight: 400; }
+        .feat-list { list-style: none; margin: 16px 0 24px; font-size: 13px; color: #cbd5e1; line-height: 2.1; }
+        .feat-list i { color: #f06a6a; margin-right: 8px; }
+        .btn-order { display: block; text-align: center; background: #f06a6a; color: #fff; text-decoration: none; padding: 11px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+        .btn-outline { background: #252930; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="/docs" class="brand">lolhuman<span>api.</span></a>
+        <a href="/docs" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="/pricing" class="nav-item active"><i class="fa-regular fa-credit-card"></i> Pricing</a>
+        <a href="/profile" class="nav-item"><i class="fa-regular fa-user"></i> Profile</a>
+        <a href="/socialmedia" class="nav-item"><i class="fa-solid fa-download"></i> Downloader</a>
+        <a href="/berita" class="nav-item"><i class="fa-solid fa-circle-info"></i> Information</a>
+        <a href="/animanga" class="nav-item"><i class="fa-solid fa-book-open"></i> Anime Manga</a>
+        <a href="/searching" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Searcher</a>
+        <a href="/textpro" class="nav-item"><i class="fa-solid fa-font"></i> TextPro.me</a>
+    </aside>
+
+    <main class="main">
+        <h2>Pricing Plan</h2>
+        <p style="font-size: 13px; color: #94a3b8; margin-top: 4px;">Pilih paket API Key sesuai kebutuhan trafik aplikasi atau bot kamu</p>
+
+        <div class="pricing-grid">
+            <div class="card">
+                <div>
+                    <h3>Free Plan</h3>
+                    <div class="price">Rp 0 <span>/ selamanya</span></div>
+                    <ul class="feat-list">
+                        <li><i class="fa-solid fa-check"></i> 100 Requests / Hari</li>
+                        <li><i class="fa-solid fa-check"></i> Reset Otomatis Jam 00:00</li>
+                        <li><i class="fa-solid fa-check"></i> Standard Endpoint Access</li>
+                    </ul>
+                </div>
+                <a href="/docs" class="btn-order btn-outline">Paket Aktif</a>
+            </div>
+
+            <div class="card popular">
+                <span class="badge-pop">POPULAR</span>
+                <div>
+                    <h3 style="color: #f06a6a;">Premium Plan</h3>
+                    <div class="price">Rp 15.000 <span>/ 30 hari</span></div>
+                    <ul class="feat-list">
+                        <li><i class="fa-solid fa-check"></i> 5.000 Requests / Hari</li>
+                        <li><i class="fa-solid fa-check"></i> Custom API Key Sesuka Hati</li>
+                        <li><i class="fa-solid fa-check"></i> Full Access VIP Endpoints</li>
+                        <li><i class="fa-solid fa-check"></i> Masa Aktif 30 Hari</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo+Admin,+saya+ingin+beli+Premium+Plan+API" target="_blank" class="btn-order">Order via WhatsApp</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>VIP Plan</h3>
+                    <div class="price">Rp 35.000 <span>/ 30 hari</span></div>
+                    <ul class="feat-list">
+                        <li><i class="fa-solid fa-check"></i> Unlimited Requests / Hari</li>
+                        <li><i class="fa-solid fa-check"></i> Custom API Key + No Cooldown</li>
+                        <li><i class="fa-solid fa-check"></i> Prioritas Support & Request Fitur</li>
+                        <li><i class="fa-solid fa-check"></i> Masa Aktif 30 Hari</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo+Admin,+saya+ingin+beli+VIP+Plan+API" target="_blank" class="btn-order">Order via WhatsApp</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
