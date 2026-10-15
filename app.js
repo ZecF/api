@@ -131,6 +131,8 @@ app.use((req, res) => {
     res.status(404).render('notfound');
 });
 
-app.listen(port, () => {
-    console.log(`Server LoL Human REST API berjalan di http://localhost:${port}`);
+const PORT = process.env.PORT || port || 5000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server LoL Human REST API berjalan di port ${PORT}`);
 });
