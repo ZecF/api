@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Users - Admin LoL Human API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #191c20; color: #f1f5f9; padding: 32px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+        .card { background-color: #1d2025; border: 1px solid #2b3038; border-radius: 10px; padding: 22px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid #2b3038; }
+        th { background: #14171a; color: #94a3b8; }
+        .badge-vip { background: rgba(240, 106, 106, 0.15); color: #f06a6a; padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+        .badge-free { background: rgba(148, 163, 184, 0.15); color: #94a3b8; padding: 3px 9px; border-radius: 6px; font-size: 11px; }
+        .btn-back { background: #f06a6a; color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Daftar User Terdaftar (<%= List.length %>)</h2>
+            <a href="/premium" class="btn-back">← Kembali ke Admin Panel</a>
+        </div>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>API Key</th>
+                        <th>Status</th>
+                        <th>Sisa Limit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% List.forEach((u, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><strong><%= u.username %></strong></td>
+                        <td><%= u.email %></td>
+                        <td><code style="color: #f06a6a;"><%= u.apikey %></code></td>
+                        <td>
+                            <% if (u.premium !== null) { %>
+                                <span class="badge-vip">PREMIUM</span>
+                            <% } else { %>
+                                <span class="badge-free">FREE</span>
+                            <% } %>
+                        </td>
+                        <td><%= u.limit %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
