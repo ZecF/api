@@ -41,7 +41,7 @@ router.get('/cekey', async (req, res) => {
     });
 });
 
-// Middleware Global: Otomatis Cek & Kurangi Limit di SEMUA Endpoint /api/*
+// Middleware Global: Otomatis Cek & Kurangi Limit untuk Free maupun Premium/VIP
 router.use(async (req, res, next) => {
     if (req.path === '/cekey' || req.path === '/cekkey') return next();
 
@@ -63,6 +63,7 @@ router.use(async (req, res, next) => {
         });
     }
 
+    // Pengecekan limit habis (berlaku untuk Free maupun jika Premium habis kuotanya)
     if (Number(user.limit) <= 0) {
         return res.status(429).json({
             status: 429,
@@ -73,13 +74,13 @@ router.use(async (req, res, next) => {
 
     const limitAwal = Number(user.limit);
 
-    // Begitu API selesai merespons, pastikan limit berkurang 1 (tanpa dobel potong)
+    // Begitu API selesai merespons, kurangi limit -1 untuk SEMUA tipe user (Free / Premium)
     res.on('finish', async () => {
         if (res.statusCode >= 200 && res.statusCode < 400) {
             try {
                 const cekUlang = await User.findOne({ apikey: apikey });
                 if (cekUlang && Number(cekUlang.limit) === limitAwal) {
-                    await limitAdd(apikey);
+                    await limitAdd(apikey); // Memotong limit user Free / Premium secara serentak
                 }
             } catch (err) {
                 console.error('Error auto-deduct limit:', err);
