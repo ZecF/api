@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - LoL Human REST API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #191c20; color: #f1f5f9; padding: 32px; }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background-color: #1d2025; border: 1px solid #2b3038; border-radius: 10px; padding: 24px; }
+        .card h3 { font-size: 16px; margin-bottom: 14px; color: #f06a6a; }
+        .form-control { width: 100%; background: #14171a; border: 1px solid #2b3038; border-radius: 8px; padding: 10px 12px; color: #fff; font-size: 13px; margin-bottom: 12px; outline: none; }
+        .btn { width: 100%; background: #f06a6a; color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; }
+        .link-btn { color: #cbd5e1; text-decoration: none; font-size: 13px; background: #1d2025; border: 1px solid #2b3038; padding: 8px 14px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Admin Control Panel</h2>
+            <div>
+                <a href="/premium/listuser" class="link-btn">Daftar User</a>
+                <a href="/docs" class="link-btn">Kembali ke Dashboard</a>
+            </div>
+        </div>
+
+        <%- include('../layouts/msg') %>
+
+        <div class="grid">
+            <!-- Form Add Premium -->
+            <div class="card">
+                <h3>Tambah User Premium / VIP</h3>
+                <form action="/premium/add" method="POST">
+                    <input type="text" name="username" class="form-control" placeholder="Username target" required>
+                    <input type="text" name="expired" class="form-control" placeholder="Durasi (contoh: 30d, 7d)" required>
+                    <input type="text" name="customKey" class="form-control" placeholder="Custom API Key" required>
+                    <input type="password" name="token" class="form-control" placeholder="Token Rahasia Admin" required>
+                    <button type="submit" class="btn">Aktifkan Premium</button>
+                </form>
+            </div>
+
+            <!-- Form Delete Premium & Reset Limit -->
+            <div class="card">
+                <h3>Hapus Premium / Reset Semua Limit</h3>
+                <form action="/premium/delete" method="POST" style="margin-bottom: 24px;">
+                    <input type="text" name="username" class="form-control" placeholder="Username target" required>
+                    <input type="password" name="token" class="form-control" placeholder="Token Rahasia Admin" required>
+                    <button type="submit" class="btn" style="background: #ef4444;">Cabut Status Premium</button>
+                </form>
+
+                <h3>Reset Seluruh Limit Harian</h3>
+                <form action="/premium/resetall" method="POST">
+                    <input type="password" name="token" class="form-control" placeholder="Token Rahasia Admin" required>
+                    <button type="submit" class="btn" style="background: #10b981;">Reset Semua Limit Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
