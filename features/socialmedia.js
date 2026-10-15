@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { checkKey, isLimit, limitAdd } = require('../database/db');
-const { tiktok } = require('../lib/tiktok'); // Memanggil scraper dari folder lib/
+
 
 // Middleware Validasi API Key & Limit
 async function verifyApiKey(req, res, next) {
