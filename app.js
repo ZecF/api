@@ -7,6 +7,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 const crypto = require('crypto');
 const path = require('path');
+const MemoryStore = require('memorystore')(session);
 
 const { port } = require('./lib/settings');
 const { connectMongoDb } = require('./database/connect');
@@ -34,7 +35,10 @@ app.use(session({
     secret: 'lolhuman_secret_key_2026',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 }
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // Bersihkan session expired setiap 24 jam
+    })
 }));
 
 app.use(passport.initialize());
