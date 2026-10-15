@@ -1,0 +1,7 @@
+<% if (typeof errors != 'undefined') { %>
+    <% errors.forEach(function(error) { %>
+        <div style="background: rgba(240, 106, 106, 0.12); border: 1px solid rgba(240, 106, 106, 0.35); color: #f06a6a; padding: 12px 16px; border-radius: 10px; font-size: 13px; margin-bottom: 16px;">
+            <%= error.msg %>
+        </div>
+    <% }); %>
+<% } %>
