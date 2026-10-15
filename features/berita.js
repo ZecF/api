@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { verifyKey } = require('../lib/function');
-const scraper = require('../lib/scraper');
 
 router.get('/berita/kompas', verifyKey, async (req, res) => {
     try {
