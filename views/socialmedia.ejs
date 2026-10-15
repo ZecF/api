@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader API - LoL Human REST API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #191c20; color: #f1f5f9; display: flex; min-height: 100vh; }
+        .sidebar { width: 235px; background-color: #1d2025; border-right: 1px solid #2b3038; padding: 20px 14px; position: fixed; height: 100vh; overflow-y: auto; }
+        .brand { font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 24px; color: #fff; display: block; text-decoration: none; }
+        .brand span { color: #f06a6a; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; color: #cbd5e1; text-decoration: none; font-size: 13px; margin-bottom: 4px; }
+        .nav-item.active, .nav-item:hover { background-color: #f06a6a; color: #fff; }
+        .main { margin-left: 235px; flex: 1; padding: 24px 32px; }
+        .card { background-color: #1d2025; border: 1px solid #2b3038; border-radius: 10px; padding: 22px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
+        th, td { text-align: left; padding: 13px 14px; border-bottom: 1px solid #2b3038; }
+        th { color: #94a3b8; font-weight: 500; background: #16191d; }
+        .badge-get { background: rgba(240, 106, 106, 0.15); color: #f06a6a; padding: 3px 9px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-online { background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 3px 9px; border-radius: 6px; font-size: 11px; }
+        .btn-try { background: #f06a6a; color: #fff; text-decoration: none; padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="/docs" class="brand">lolhuman<span>api.</span></a>
+        <a href="/docs" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="/socialmedia" class="nav-item active"><i class="fa-solid fa-download"></i> Downloader</a>
+        <a href="/berita" class="nav-item"><i class="fa-solid fa-circle-info"></i> Information</a>
+        <a href="/animanga" class="nav-item"><i class="fa-solid fa-book-open"></i> Anime Manga</a>
+        <a href="/searching" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Searcher</a>
+        <a href="/textpro" class="nav-item"><i class="fa-solid fa-font"></i> TextPro.me</a>
+        <a href="/photofunia" class="nav-item"><i class="fa-regular fa-image"></i> Photofunia</a>
+        <a href="/creator" class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Creator</a>
+        <a href="/primbon" class="nav-item"><i class="fa-regular fa-star"></i> Primbon</a>
+        <a href="/asupan" class="nav-item"><i class="fa-solid fa-video"></i> Asupan</a>
+        <a href="/nsfwsfw" class="nav-item"><i class="fa-solid fa-masks-theater"></i> Random Image</a>
+    </aside>
+
+    <main class="main">
+        <h2 style="margin-bottom: 18px;">Downloader & Social Media API</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fitur</th>
+                        <th>Method</th>
+                        <th>Parameter</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TikTok No Watermark</td>
+                        <td><span class="badge-get">GET</span></td>
+                        <td><code>url, apikey</code></td>
+                        <td><span class="badge-online">Online</span></td>
+                        <td><a href="/api/tiktok?url=https://vt.tiktok.com/ZS8/&apikey=<%= apikey %>" target="_blank" class="btn-try">Try</a></td>
+                    </tr>
+                    <tr>
+                        <td>YouTube Video & Audio</td>
+                        <td><span class="badge-get">GET</span></td>
+                        <td><code>url, apikey</code></td>
+                        <td><span class="badge-online">Online</span></td>
+                        <td><a href="/api/ytmp4?url=https://youtu.be/dQw4w9WgXcQ&apikey=<%= apikey %>" target="_blank" class="btn-try">Try</a></td>
+                    </tr>
+                    <tr>
+                        <td>Instagram Reels / Post</td>
+                        <td><span class="badge-get">GET</span></td>
+                        <td><code>url, apikey</code></td>
+                        <td><span class="badge-online">Online</span></td>
+                        <td><a href="/api/igdl?url=https://www.instagram.com/p/C/&apikey=<%= apikey %>" target="_blank" class="btn-try">Try</a></td>
+                    </tr>
+                    <tr>
+                        <td>Mediafire Downloader</td>
+                        <td><span class="badge-get">GET</span></td>
+                        <td><code>url, apikey</code></td>
+                        <td><span class="badge-online">Online</span></td>
+                        <td><a href="/api/mediafire?url=https://www.mediafire.com/&apikey=<%= apikey %>" target="_blank" class="btn-try">Try</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
