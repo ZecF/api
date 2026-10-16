@@ -114,7 +114,8 @@ app.get('/profile', isAuthenticated, (req, res) => {
 });
 
 // Halaman Kategori Fitur (Sesuai views/*.ejs di apaky-master)
-const categories = ['animanga', 'asupan', 'berita', 'creator', 'nsfwsfw', 'photofunia', 'primbon', 'searching', 'socialmedia', 'textpro', 'pricing'];
+// Hanya merender kategori yang ada di Scraper-By-Zane-main
+const categories = ['socialmedia', 'berita', 'animanga', 'searching', 'creator', 'pricing'];
 categories.forEach((cat) => {
     app.get(`/${cat}`, isAuthenticated, (req, res) => {
         res.render(cat, {
@@ -124,7 +125,6 @@ categories.forEach((cat) => {
         });
     });
 });
-
 // Mount Routers
 app.use('/users', userRouters);
 app.use('/api', apiRouters);
