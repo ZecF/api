@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoFunia API - LoL Human REST API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-main: #191c20; --bg-card: #1d2025; --bg-th: #14171a; --border-color: #2b3038; --text-primary: #f1f5f9; --text-secondary: #cbd5e1; --text-muted: #94a3b8; --accent: #f06a6a; }
+        body.light-mode { --bg-main: #f1f5f9; --bg-card: #ffffff; --bg-th: #f8fafc; --border-color: #e2e8f0; --text-primary: #0f172a; --text-secondary: #334155; --text-muted: #64748b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-primary); display: flex; min-height: 100vh; }
+        .sidebar { width: 235px; background-color: var(--bg-card); border-right: 1px solid var(--border-color); padding: 20px 14px; position: fixed; height: 100vh; overflow-y: auto; }
+        .brand { font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 24px; color: var(--text-primary); display: block; text-decoration: none; }
+        .brand span { color: var(--accent); }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; color: var(--text-secondary); text-decoration: none; font-size: 13px; margin-bottom: 4px; }
+        .nav-item.active, .nav-item:hover { background-color: var(--accent); color: #fff; }
+        .main { margin-left: 235px; flex: 1; padding: 24px 32px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .theme-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-secondary); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; }
+        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 22px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { text-align: left; padding: 13px 14px; border-bottom: 1px solid var(--border-color); }
+        th { color: var(--text-muted); font-weight: 500; background: var(--bg-th); }
+        .badge-get { background: rgba(240, 106, 106, 0.15); color: #f06a6a; padding: 3px 9px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-online { background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 3px 9px; border-radius: 6px; font-size: 11px; }
+        .btn-try { background: #f06a6a; color: #fff; text-decoration: none; padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="/docs" class="brand">lolhuman<span>api.</span></a>
+        <a href="/docs" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="/socialmedia" class="nav-item"><i class="fa-solid fa-download"></i> Downloader</a>
+        <a href="/berita" class="nav-item"><i class="fa-solid fa-circle-info"></i> Information</a>
+        <a href="/animanga" class="nav-item"><i class="fa-solid fa-book-open"></i> Anime Manga</a>
+        <a href="/searching" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Searcher</a>
+        <a href="/textpro" class="nav-item"><i class="fa-solid fa-font"></i> TextPro.me</a>
+        <a href="/photofunia" class="nav-item active"><i class="fa-regular fa-image"></i> Photofunia</a>
+        <a href="/creator" class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Creator</a>
+        <a href="/primbon" class="nav-item"><i class="fa-regular fa-star"></i> Primbon</a>
+        <a href="/asupan" class="nav-item"><i class="fa-solid fa-video"></i> Asupan</a>
+        <a href="/nsfwsfw" class="nav-item"><i class="fa-solid fa-masks-theater"></i> Random Image</a>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <h2>PhotoFunia Maker API</h2>
+            <button id="themeToggle" class="theme-btn"><i id="themeIcon" class="fa-regular fa-moon"></i></button>
+        </div>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Nama Fitur</th><th>Method</th><th>Parameter</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>PhotoFunia Snow Sign</td><td><span class="badge-get">GET</span></td><td><code>text, apikey</code></td><td><span class="badge-online">Online</span></td><td><a href="/api/photofunia/snow?text=LoLHuman&apikey=<%= apikey %>" target="_blank" class="btn-try">Try</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script>
+        const btn = document.getElementById('themeToggle');
+        const icon = document.getElementById('themeIcon');
+        if (localStorage.getItem('lolhuman_theme') === 'light') { document.body.classList.add('light-mode'); icon.className = 'fa-regular fa-sun'; }
+        btn.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('lolhuman_theme', isLight ? 'light' : 'dark');
+            icon.className = isLight ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
+        };
+    </script>
+</body>
+</html>
